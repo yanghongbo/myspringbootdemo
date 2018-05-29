@@ -1,7 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.registerBeans.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +16,10 @@ import javax.xml.ws.RequestWrapper;
 @RequestMapping(value = "/test")
 public class TestController {
     @Value("${author.name}")
-    private String  name;
+    private String name;
+
+    @Autowired
+    Person allenBean;
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -31,6 +36,7 @@ public class TestController {
 
     /**
      * 读取配置文件中的属性
+     *
      * @return
      */
     @RequestMapping(value = "/read-config", method = RequestMethod.GET)
@@ -38,4 +44,10 @@ public class TestController {
         String authName = name;
         return authName;
     }
+
+    @RequestMapping(value = "/get-bean", method = RequestMethod.GET)
+    public String getBean() {
+        return String.format("name:%s,age:%d,sex:%s", allenBean.getName(), allenBean.getAge(), allenBean.getSex());
+    }
+
 }
