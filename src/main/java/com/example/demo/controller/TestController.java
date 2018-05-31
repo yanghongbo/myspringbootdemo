@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.annotation.TestAnnotation;
 import com.example.demo.registerBeans.Person;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,6 +24,7 @@ public class TestController {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
 
+    @TestAnnotation
     @RequestMapping(value = "/log", method = RequestMethod.GET)
     public String log() {
         logger.trace("日志输出 trace");
