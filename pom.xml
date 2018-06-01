@@ -47,9 +47,16 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
+		<!--使用redis-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-redis</artifactId>
+		</dependency>
+
+		<!--使用基于redis存储的session-->
+		<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session-data-redis</artifactId>
 		</dependency>
 	</dependencies>
 
