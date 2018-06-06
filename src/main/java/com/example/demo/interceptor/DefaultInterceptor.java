@@ -20,10 +20,11 @@ public class DefaultInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         logger.info("进入拦截器的preHandle方法");
         String uri = request.getRequestURI();
-        if (uri.contains("test")) {
-            return true;
-        }
-        return false;
+        return true;
+//        if (uri.contains("test")) {
+//            return true;
+//        }
+//        return false;
     }
 
     @Override
