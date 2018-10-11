@@ -20,7 +20,7 @@ public class RedisTestController {
     }
 
     @RequestMapping(value = "/get/{key}", method = RequestMethod.GET)
-    public String set(@PathVariable("key") String key) {
+    public String get(@PathVariable("key") String key) {
         return redisUtil.get(key);
     }
 }

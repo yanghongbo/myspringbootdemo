@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,8 +10,19 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class DemoApplicationTests {
 
+//	@Test
+//	public void contextLoads() {
+//	}
+
 	@Test
-	public void contextLoads() {
+	public void demoTest() {
+		String str = "ok";
+		Assert.assertEquals("werw", str);
 	}
 
+	@Test
+	public void demo2Test() {
+		String str = "ok";
+		Assert.assertEquals("ok", str);
+	}
 }
