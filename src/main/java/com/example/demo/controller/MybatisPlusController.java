@@ -20,6 +20,6 @@ public class MybatisPlusController {
     public User getUser(@PathVariable("id") Integer id) {
 //        List<User> users = userMapper.selectList(null);
         User user = userMapper.selectById(3);
-        return users;
+        return user;
     }
 }
