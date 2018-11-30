@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Result;
+import com.example.demo.entity.User;
 import com.example.demo.entity.vo.VueLoginInfoVo;
 import com.example.demo.enums.ResultCode;
+import com.example.demo.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,6 +15,9 @@ import javax.validation.Valid;
 
 @RestController
 public class AccountController {
+    @Autowired
+    UserService userService;
+
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public Result login(@Valid @RequestBody VueLoginInfoVo loginInfoVo, BindingResult bindingResult, HttpServletRequest request) {
         if (bindingResult.hasErrors()) {
@@ -38,7 +44,12 @@ public class AccountController {
             return new Result(ResultCode.FAIL.code, message, null);
         }
 
-        return new Result("ok");
+        User user = new User();
+        user.setName(loginInfoVo.getUsername());
+        user.setPassword(loginInfoVo.getPassword());
+        userService.save(user);
+
+        return new Result(ResultCode.SUCCESS.code, "注册成功", null);
     }
 
 }
